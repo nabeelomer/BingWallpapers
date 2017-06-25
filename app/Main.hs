@@ -23,7 +23,7 @@ main = do
     print exitcode
     return ()
 
--- From StackOverflow
+-- From https://stackoverflow.com/a/24792141/8207187
 split :: Eq a => a -> [a] -> [[a]]
 split d [] = []
 split d s = x : split d (drop 1 y) where (x,y) = span (/= d) s
