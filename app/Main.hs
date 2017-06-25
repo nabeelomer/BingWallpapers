@@ -9,14 +9,17 @@ import GHC.IO.Exception
 
 main :: IO ()
 main = do
+    -- using http://muzzammil.xyz/git/bing/
     metadata <- get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=IN"
+
     -- Guaranteed by the API
     putStrLn $ (split '>' $ (lines $ L8.unpack metadata)!!1)!!1
     let url = (lines $ L8.unpack metadata)!!0
     picture <- get $ (split '>' url)!!1
-    -- All this was guaranteed by the API
-    L8.writeFile "/home/nabeel/Pictures/current" picture
-    exitcode <- setWallpaper "/home/nabeel/Pictures/current"
+
+    L8.writeFile "/dev/shm/Bing-Wallpaper" picture
+    exitcode <- setWallpaper "/dev/shm/Bing-Wallpaper"
+
     print exitcode
     return ()
 
