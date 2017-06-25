@@ -22,4 +22,4 @@ executable BingWallpapers
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/new-template
+  location: https://github.com/nabeelomer/BingWallpapers
