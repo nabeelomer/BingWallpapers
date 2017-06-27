@@ -6,27 +6,23 @@ import Network.HTTP.Conduit
 import System.Process
 import qualified Data.ByteString.Lazy.Char8 as L8
 import GHC.IO.Exception
+import Data.List.Split
 
 main :: IO ()
 main = do
     -- using http://muzzammil.xyz/git/bing/
-    metadata <- get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=IN"
-
-    -- Guaranteed by the API
-    putStrLn $ (split '>' $ (lines $ L8.unpack metadata)!!1)!!1
-    let url = (lines $ L8.unpack metadata)!!0
-    picture <- get $ (split '>' url)!!1
-
-    L8.writeFile "/dev/shm/Bing-Wallpaper" picture
-    exitcode <- setWallpaper "/dev/shm/Bing-Wallpaper"
-
-    print exitcode
+    -- from https://codereview.stackexchange.com/a/166766/142027
+    (_:url:_):(_:title:_):_ <- map (wordsBy (=='>')) . lines . L8.unpack <$> get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=IN"
+    putStrLn title
+    L8.writeFile "/dev/shm/Bing-Wallpaper" =<< get url
+    print =<< setWallpaper "/dev/shm/Bing-Wallpaper"
+    
     return ()
 
 -- From https://stackoverflow.com/a/24792141/8207187
-split :: Eq a => a -> [a] -> [[a]]
-split d [] = []
-split d s = x : split d (drop 1 y) where (x,y) = span (/= d) s
+-- split :: Eq a => a -> [a] -> [[a]]
+-- split d [] = []
+-- split d s = x : split d (drop 1 y) where (x,y) = span (/= d) s
 
 get :: String -> IO L8.ByteString
 get url = simpleHttp url
