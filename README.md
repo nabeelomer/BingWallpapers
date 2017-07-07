@@ -2,6 +2,8 @@
 Fetches and applies the image of the day from Bing as the wallpaper. Works only on Ubuntu. 
 
 # Building
+You need the [Haskell Stack](http://www.haskellstack.org/) tool to build BingWalpapers.
+Install Stack and run:
 ```zsh
 stack build
 ```
