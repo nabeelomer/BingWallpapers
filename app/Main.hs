@@ -7,17 +7,16 @@ import System.Process
 import qualified Data.ByteString.Lazy.Char8 as L8
 import GHC.IO.Exception
 import Data.List.Split
+import Control.Monad
 
 main :: IO ()
 main = do
     -- using http://muzzammil.xyz/git/bing/
     -- from https://codereview.stackexchange.com/a/166766/142027
-    (_:url:_):(_:title:_):_ <- map (wordsBy (=='>')) . lines . L8.unpack <$> get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=IN"
+    (_:url:_):(_:title:_):_ <- map (wordsBy (=='>')) . lines . L8.unpack <$> get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=AU"
     putStrLn title
     L8.writeFile "/dev/shm/Bing-Wallpaper" =<< get url
     print =<< setWallpaper "/dev/shm/Bing-Wallpaper"
-    
-    return ()
 
 -- From https://stackoverflow.com/a/24792141/8207187
 -- split :: Eq a => a -> [a] -> [[a]]
