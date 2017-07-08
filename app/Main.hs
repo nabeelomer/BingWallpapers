@@ -8,9 +8,14 @@ import qualified Data.ByteString.Lazy.Char8 as L8
 import GHC.IO.Exception
 import Data.List.Split
 import Control.Monad
+import System.Environment
+import Paths_BingWallpapers
+import Data.Version (showVersion)
 
 main :: IO ()
 main = do
+    putStrLn $ "Bing Wallpapers v" ++ showVersion version
+    setEnv "DISPLAY" ":0"
     -- using http://muzzammil.xyz/git/bing/
     -- from https://codereview.stackexchange.com/a/166766/142027
     (_:url:_):(_:title:_):_ <- map (wordsBy (=='>')) . lines . L8.unpack <$> get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=AU"
