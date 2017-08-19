@@ -16,9 +16,10 @@ main :: IO ()
 main = do
     putStrLn $ "Bing Wallpapers v" ++ showVersion version
     setEnv "DISPLAY" ":0"
+
     -- using http://muzzammil.xyz/git/bing/
     -- from https://codereview.stackexchange.com/a/166766/142027
-    (_:url:_):(_:title:_):_ <- map (wordsBy (=='>')) . lines . L8.unpack <$> get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=AU"
+    (_:url:_):(_:title:_):_ <- map (wordsBy (=='>')) . lines . L8.unpack <$> get "http://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=AU&hs"
     putStrLn title
     L8.writeFile "/dev/shm/Bing-Wallpaper" =<< get url
     print =<< setWallpaper "/dev/shm/Bing-Wallpaper"

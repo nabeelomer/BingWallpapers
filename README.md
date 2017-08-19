@@ -2,7 +2,12 @@
 Fetches and applies the image of the day from Bing as the wallpaper. Works only on Ubuntu.
 
 
-BingWallpapers uses the [Bing Homepage API](https://github.com/muhammadmuzzammil1998/BingHomepageAPI).<br>
+BingWallpapers will work on most systems when run as a Cron Job.
+
+
+BingWallpapers uses the [Bing Homepage API](https://github.com/muhammadmuzzammil1998/BingHomepageAPI).
+
+
 For BingWallpapers on Windows see [muhammadmuzzammil1998/BingWallpaper](https://github.com/muhammadmuzzammil1998/BingWallpaper)
 
 # Building
