@@ -4,7 +4,7 @@ version:             0.2.0.15
 -- description:
 homepage:            https://github.com/nabeelomer/BingWallpapers
 license:             BSD3
-license-file:        LICENSE
+license-file:        ../LICENSE
 author:              Nabeel Omer
 maintainer:          me@nabeelomer.me
 copyright:           2017 Nabeel Omer
