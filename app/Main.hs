@@ -13,7 +13,7 @@ import System.Environment
 import Paths_BingWallpapers
 import Data.Version (showVersion)
 
-foreign import ccall "setWallpaper" setWallpaper :: [Char] -> Int
+foreign import ccall "setWallpaper" setWallpaper :: Int
 
 main :: IO ()
 main = do
@@ -23,8 +23,8 @@ main = do
     -- from https://codereview.stackexchange.com/a/166766/142027
     (_:url:_):(_:title:_):_ <- map (wordsBy (=='>')) . lines . L8.unpack <$> get "https://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=AU&hs"
     putStrLn title
-    L8.writeFile "/Users/nabeelomer/bing-wallpapers.jpg" =<< get url
-    print setWallpaper "/Users/nabeelomer/bing-wallpapers.jpg"
+    L8.writeFile "/tmp/wallpapers" =<< get url
+    print setWallpaper
 
 -- From https://stackoverflow.com/a/24792141/8207187
 -- split :: Eq a => a -> [a] -> [[a]]

@@ -11,19 +11,18 @@
 #import <Appkit/AppKit.h>
 #import <CoreWLAN/CoreWLAN.h>
 
-int setWallpaper(char* path) {
-    NSString* objcstring = @(path);
+void setWallpaper() {
+    NSString* objcstring = @("/tmp/wallpapers");
     @autoreleasepool {
         NSWorkspace *sw = [NSWorkspace sharedWorkspace];
         NSScreen *screen = [NSScreen screens].firstObject;
         NSMutableDictionary *so = [[sw desktopImageOptionsForScreen:screen] mutableCopy];
         NSError *err;
-        
+
         bool success = [sw
                         setDesktopImageURL:[NSURL fileURLWithPath:objcstring]
                         forScreen:screen
                         options:so
                         error:&err];
-        return 0;
     }
 }
