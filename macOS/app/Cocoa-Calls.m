@@ -1,10 +1,5 @@
-//
-//  main.m
-//  BingWallpapers-Mac
-//
-//  Created by Nabeel Omer on 25/07/17.
-//  Copyright © 2017 Nabeel Omer. All rights reserved.
-//
+//  Copyright © 2017 Nabeel Omer
+//  See the LICENSE file for the license
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
