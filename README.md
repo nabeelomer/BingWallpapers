@@ -1,4 +1,7 @@
 # Bing Wallpapers
+
+**Bing Wallpapers now works on macOS**
+
 Fetches and applies the image of the day from Bing as the wallpaper. Works on Ubuntu and macOS.
 
 
