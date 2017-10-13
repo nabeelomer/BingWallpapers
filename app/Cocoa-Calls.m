@@ -19,5 +19,6 @@ void setWallpaper() {
                         forScreen:screen
                         options:so
                         error:&err];
+        printf("%s", [[err localizedDescription] UTF8String]);
     }
 }

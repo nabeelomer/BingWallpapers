@@ -4,13 +4,13 @@ version:             1.1.0.0
 -- description:
 homepage:            https://github.com/nabeelomer/BingWallpapers
 license:             BSD3
-license-file:        ../LICENSE
+license-file:        LICENSE
 author:              Nabeel Omer
 maintainer:          me@nabeelomer.me
 copyright:           2017 Nabeel Omer
 category:            Desktop
 build-type:          Simple
-extra-source-files:  ../README.md
+extra-source-files:  README.md
 cabal-version:       >=1.10
 
 executable BingWallpapers
