@@ -15,7 +15,7 @@ import Paths_BingWallpapers
 import Data.Version (showVersion)
 
 #if defined(darwin_HOST_OS)
-{-# OPTIONS_GHC Cocoa-Calls.o #-}
+
 foreign import ccall "setWallpaper" setWallpaper :: IO Int
 #elif defined(linux_HOST_OS)
 setWallpaper :: IO GHC.IO.Exception.ExitCode

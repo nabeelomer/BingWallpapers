@@ -16,7 +16,7 @@ cabal-version:       >=1.10
 executable BingWallpapers
   hs-source-dirs:      app
   main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N Cocoa-Calls.o
   build-depends:       base, HTTP, process, http-conduit, bytestring, text, json, split
   default-language:    Haskell2010
 
