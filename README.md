@@ -13,6 +13,7 @@ Install Stack and run `make`.
 
 # Building on Ubuntu
 You need [Go](https://golang.org/doc/install) to build BingWallpapers
+
     $ git clone https://github.com/nabeelomer/BingWallpapers.git
     $ cd BingWallpapers/Ubuntu
     $ go build
