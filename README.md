@@ -17,4 +17,4 @@ You need [Go](https://golang.org/doc/install) to build BingWallpapers
     $ git clone https://github.com/nabeelomer/BingWallpapers.git
     $ cd BingWallpapers/Ubuntu
     $ go build
-    $ ./BingWallpapers
+    $ ./Ubuntu
