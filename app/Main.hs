@@ -14,7 +14,13 @@ import System.Environment
 import Paths_BingWallpapers
 import Data.Version (showVersion)
 
+#if defined(darwin_HOST_OS)
 foreign import ccall "setWallpaper" setWallpaper :: IO Int
+#elif defined(linux_HOST_OS)
+setWallpaper :: IO GHC.IO.Exception.ExitCode
+setEnv "DISPLAY" ":0"
+setWallpaper = system $ "gsettings set org.gnome.desktop.background picture-uri file://"
+#endif
 
 main :: IO ()
 main = do
