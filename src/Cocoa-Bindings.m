@@ -3,11 +3,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
-#import <Appkit/AppKit.h>
-#import <CoreWLAN/CoreWLAN.h>
 
-void setWallpaper() {
-    NSString* objcstring = @("/tmp/wallpapers");
+bool setWallpaper() 
+{
+    NSString* objcstring = @("/tmp/wallpaper");
     @autoreleasepool {
         NSWorkspace *sw = [NSWorkspace sharedWorkspace];
         NSScreen *screen = [NSScreen screens].firstObject;
@@ -19,6 +18,10 @@ void setWallpaper() {
                         forScreen:screen
                         options:so
                         error:&err];
-        printf("%s", [[err localizedDescription] UTF8String]);
+        if (success != 0) 
+        {
+            printf("%s", [[err localizedDescription] UTF8String]);
+        }
+        return success;
     }
 }

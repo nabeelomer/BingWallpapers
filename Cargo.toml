@@ -1,0 +1,10 @@
+[package]
+name = "BingWallpapers"
+version = "0.1.0"
+authors = ["Nabeel Omer <nabeelkomer@gmail.com>"]
+
+[dependencies]
+reqwest = "0.8.2"
+
+[build-dependencies]
+cc = "1.0"
