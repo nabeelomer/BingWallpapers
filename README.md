@@ -1,6 +1,6 @@
 # BingWallpapers
 
-BingWallpapers applies the Bing image of the day as the wallpaper of your Mac or Ubuntu PC.
+BingWallpapers applies the Bing image of the day as the wallpaper of your Mac or Ubuntu PC. It uses the [Bing Homepage API](https://git.muzzammil.xyz/bing/).
 
 You need [Rust](https://www.rust-lang.org/en-US/other-installers.html) to build BingWallpapers.
 
