@@ -6,6 +6,7 @@ use std::process::Command;
 
 fn main() {
     if let Ok(mut response) =
+        // using http://muzzammil.xyz/git/bing/
         reqwest::get("https://cdn.muzzammil.xyz/bing/bing.php?format=text&cc=AU&hs")
     {
         let text = response.text().unwrap();

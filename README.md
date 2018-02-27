@@ -9,3 +9,4 @@ $ git clone https://github.com/nabeelomer/BingWallpapers.git
 $ cd BingWallpapers
 $ cargo build --release
 ```
+# For BingWallpapers on Windows see [muhammadmuzzammil1998/BingWallpaper](https://github.com/muhammadmuzzammil1998/BingWallpaper)
