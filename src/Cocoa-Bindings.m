@@ -1,24 +1,22 @@
 //  Copyright © 2017 Nabeel Omer
 //  See the LICENSE file for the license
 
-#import <Foundation/Foundation.h>
-#import <Cocoa/Cocoa.h>
+@import AppKit;
 
-bool setWallpaper() 
+bool setWallpaper(char* path) 
 {
-    NSString* objcstring = @("/tmp/wallpaper");
+    NSString* objcstring = @(path);
     @autoreleasepool {
         NSWorkspace *sw = [NSWorkspace sharedWorkspace];
         NSScreen *screen = [NSScreen screens].firstObject;
         NSMutableDictionary *so = [[sw desktopImageOptionsForScreen:screen] mutableCopy];
         NSError *err;
-
         bool success = [sw
                         setDesktopImageURL:[NSURL fileURLWithPath:objcstring]
                         forScreen:screen
                         options:so
                         error:&err];
-        if (success != 0) 
+        if (success != true) 
         {
             printf("%s", [[err localizedDescription] UTF8String]);
         }

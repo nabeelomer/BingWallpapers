@@ -3,6 +3,8 @@ extern crate reqwest;
 use std::fs::File;
 use std::io::prelude::*;
 use std::process::Command;
+use std::env;
+use std::ffi::CString;
 
 fn main() {
     if let Ok(mut response) =
@@ -17,11 +19,16 @@ fn main() {
         let url = metadata.pop().unwrap().split(">").collect::<Vec<&str>>();
 
         if let Ok(mut image) = reqwest::get(url[1]) {
-            let mut file = File::create("/tmp/wallpaper").unwrap();
-            image.copy_to(&mut file).expect("Failed to save image!");
+            if let Some(mut path) = env::home_dir() {
+                path.push("wallpaper.jpg");
+                let mut file = File::create(path).unwrap();
+                image.copy_to(&mut file).expect("Failed to save image!");
+            }
         } else {
             println!("Unable to download image!");
         }
+
+        set_wallpaper();
 
         println!(
             "BingWallpapers {}\n{}\n{}",
@@ -36,7 +43,10 @@ fn main() {
 
 #[cfg(target_os = "macos")]
 fn set_wallpaper() {
-    let status = unsafe { setWallpaper() };
+    if let Some(mut path) = env::home_dir() {
+        path.push("wallpaper.jpg");
+        unsafe { setWallpaper(CString::new(path.to_str().unwrap()).unwrap()) };
+    }
 }
 
 #[cfg(target_os = "linux")]
@@ -52,7 +62,8 @@ fn set_wallpaper() {
         .expect("Failed to apply wallpaper!")
 }
 
+#[cfg(target_os = "macos")]
 #[link(name = "Cocoa-Bindings", kind = "static")]
 extern "C" {
-    fn setWallpaper() -> i32;
+    fn setWallpaper(path: CString) -> i32;
 }
